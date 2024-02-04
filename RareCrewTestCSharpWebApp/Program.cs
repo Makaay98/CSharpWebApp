@@ -1,10 +1,17 @@
 using RareCrewTestCSharpWebApp.Components;
+using RareCrewTestCSharpWebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Service Dependency Injection
+builder.Services.AddHttpClient<IEmployeeService, EmployeeService>(client =>
+{ 
+    client.BaseAddress = new Uri("https://rc-vault-fap-live-1.azurewebsites.net/"); 
+}); 
 
 var app = builder.Build();
 
