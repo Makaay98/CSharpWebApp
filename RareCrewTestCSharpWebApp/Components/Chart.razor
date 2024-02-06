@@ -1,0 +1,17 @@
+﻿
+<canvas id="ctx" style="width: 0; height:0;"></canvas>
+
+<button @onclick="SaveChart">Save Chart</button>
+
+@code {
+    [Parameter] 
+    public IEnumerable<Models.Employee> employees { get; set; }
+
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
+
+    private async Task SaveChart()
+    {
+        await JSRuntime.InvokeVoidAsync("createAndSaveChart", employees);
+    }
+}

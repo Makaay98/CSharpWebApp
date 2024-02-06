@@ -7,5 +7,7 @@
         public string? EmployeeName { get; set; }
          
         public int? HoursWorked { get; set; }
+
+        public double? Procentage { get; set; }
     }
 }

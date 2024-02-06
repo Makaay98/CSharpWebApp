@@ -50,10 +50,20 @@
                 }
             }
 
+            double totalWorkedHours = employeesMap.Sum(x => x.Value.HoursWorked ?? 0);
+
             foreach (var item in employeesMap)
             {
+                double procentage = 0;
+                if(item.Value.HoursWorked != null)
+                {
+                    procentage = Math.Round(((double)item.Value.HoursWorked / totalWorkedHours) * 100);
+                }
+                 
+                item.Value.Procentage = procentage;
                 appModelEmployees.Add(item.Value);
             }
+
 
             return appModelEmployees;
         }
